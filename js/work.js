@@ -11,12 +11,12 @@ let count;
 let recordInterval;
 let recoding = false;
 let movementTypes = ["soft", "hard", "fast", "slow", "fluently", "interrupted"]
+let randomselect = Math.floor(Math.random() * movementTypes.length);
 
 writeToScreen("js ready");
 
 function selectMovementTypes() {
   let movementTypesDisplay = document.querySelector("#type");
-  let randomselect = Math.floor(Math.random() * movementTypes.length);
   movementTypesDisplay.innerHTML = movementTypes[randomselect];
 }
 selectMovementTypes();
@@ -24,7 +24,7 @@ selectMovementTypes();
 function recordMotion() {
 
   websocket.send(JSON.stringify(movementData))
-  if (count > 500) {
+  if (count > 300) {
     websocket.send("END");
     writeToScreen("END recording")
 //    websocket.close();
@@ -44,7 +44,7 @@ function startRecordingMotion() {
     audio.play();
     setTimeout(function () {
       websocket.send("START recording")
-      websocket.send(movementTypes)
+      websocket.send(movementTypes[randomselect])
       writeToScreen("START recording")
       recordInterval = setInterval(recordMotion, 10);
     }, 3800);
