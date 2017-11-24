@@ -2,6 +2,9 @@
 /*jshint asi: true */
 /*jshint browser: true*/
 
+
+const wsAdress = "ws://milan.local:8080";
+
 let xValue;
 let yValue;
 let zValue;
@@ -81,7 +84,7 @@ if (window.DeviceMotionEvent) {
 
 }
 
-websocket = new WebSocket("ws://milan.local:8080");
+websocket = new WebSocket(wsAdress);
 
 
 
