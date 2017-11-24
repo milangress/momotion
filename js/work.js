@@ -9,8 +9,17 @@ let movementData;
 var websocket;
 let count;
 let recordInterval;
+let recoding = false;
+let movementTypes = ["soft", "hard", "fast", "slow", "fluently", "interrupted"]
 
 writeToScreen("js ready");
+
+function selectMovementTypes() {
+  let movementTypesDisplay = document.querySelector("#type");
+  let randomselect = Math.floor(Math.random() * movementTypes.length);
+  movementTypesDisplay.innerHTML = movementTypes[randomselect];
+}
+selectMovementTypes();
 
 function recordMotion() {
 
@@ -20,17 +29,22 @@ function recordMotion() {
     writeToScreen("END recording")
 //    websocket.close();
     clearInterval(recordInterval);
+    recoding = false;
   }
   count += 1;
 }
 
+
+
 function startRecordingMotion() {
-  if (websocket.readyState == 1) {
+  if (websocket.readyState == 1 && !recoding) {
+    recoding = true;
     count = 0;
     var audio = new Audio('res/start-beeps.wav');
     audio.play();
     setTimeout(function () {
       websocket.send("START recording")
+      websocket.send(movementTypes)
       writeToScreen("START recording")
       recordInterval = setInterval(recordMotion, 10);
     }, 3800);
