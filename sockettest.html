@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<head>
+<title>WebSocket Test</title>
+<script language="javascript" type="text/javascript">
+
+    var websocket;
+
+function OpenWebSocket()
+{
+
+   try {
+       websocket = new WebSocket(document.getElementById("wsURL").value);
+       websocket.onopen = function(evt) { onOpen(evt) };
+       websocket.onclose = function(evt) { onClose(evt) };
+       websocket.onmessage = function(evt) { onMessage(evt) };
+       websocket.onerror = function(evt) { onError(evt) };
+   }
+   catch(err) {
+       writeToScreen(err.message);
+   }
+}
+
+function CloseWebSocket()
+{
+     websocket.close();
+}
+
+function FindWebSocketStatus()
+{
+     try {
+         if (websocket.readyState == 1){
+          writeToScreen("Websocket connection is in open state")
+         }
+         else if (websocket.readyState == 0){
+             writeToScreen("Websocket connection is in connecting state")
+         }
+         else{
+          writeToScreen("Websocket connection is in close state")
+         }
+     }
+     catch(err) {
+         writeToScreen(err.message);
+     }
+}
+
+function FindWebSocketBufferedAmount(){
+    try {
+            writeToScreen(websocket.bufferedAmount)
+    }
+    catch(err) {
+        writeToScreen(err.message);
+    }
+}
+
+function SendMessageThroughSocket(){
+    doSend(document.getElementById("wsMessage").value);
+}
+
+function onOpen(evt)
+{
+    writeToScreen("Socket Connection Opened");
+}
+
+function onClose(evt)
+{
+    writeToScreen("Socket Connection Closed");
+}
+
+function onMessage(evt)
+{
+    writeToScreen('<span style="color: blue;">SERVER RESPONSE: ' + evt.data+'</span>');
+}
+
+function onError(evt)
+{
+    writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+}
+
+function doSend(message)
+{
+    try{
+    writeToScreen("CLIENT SENT: " + message);
+    websocket.send(message);
+    }
+    catch(err) {
+        writeToScreen(err.message);
+    }
+}
+
+function writeToScreen(message)
+{
+    var output = document.getElementById("output");
+    var pre = document.createElement("p");
+    pre.style.wordWrap = "break-word";
+    pre.innerHTML = message;
+    output.appendChild(pre);
+}
+</script>
+</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                WebSocket URL
+            </td>
+            <td>
+                <input type="text" id="wsURL" value="ws://milan.local:8080"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                WebSocket Message
+            </td>
+            <td>
+                <input type="text" id="wsMessage" value="Hi"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:left;">
+                <input type="button" value="Open Socket Connection" onclick="OpenWebSocket();"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:left;">
+                 <input type="button" value="Send Message" onclick="SendMessageThroughSocket();"/>
+            </td>
+        </tr>
+        <tr>
+          <td colspan="2" style="text-align:left;">
+              <input type="button" value="Close Socket Connection" onclick="CloseWebSocket();"/>
+          </td>
+         </tr>
+        <tr>
+            <td colspan="2" style="text-align:left;">
+                <input type="button" value="Find Socket Status" onclick="FindWebSocketStatus();"/>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align:left;">
+                <input type="button" value="Find Socket Buffered Amount" onclick="FindWebSocketBufferedAmount();"/>
+            </td>
+        </tr>
+    </table>
+
+<div id="output"></div>
+</body>
+</html>
