@@ -16,7 +16,7 @@ let recoding = false;
 let movementTypes = ["soft", "hard", "fast", "slow", "fluently", "interrupted"]
 let randomselect = Math.floor(Math.random() * movementTypes.length);
 
-writeToScreen("js ready");
+writeToScreen("javascript ready");
 
 function selectMovementTypes() {
   let movementTypesDisplay = document.querySelector("#type");
@@ -46,7 +46,7 @@ function startRecordingMotion() {
     var audio = new Audio('res/start-beeps.wav');
     audio.play();
     setTimeout(function () {
-      websocket.send("START recording")
+      websocket.send("START")
       websocket.send(movementTypes[randomselect])
       writeToScreen("START recording")
       recordInterval = setInterval(recordMotion, 10);
