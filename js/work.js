@@ -2,8 +2,9 @@
 /*jshint asi: true */
 /*jshint browser: true*/
 
+let gn = new GyroNorm();
 
-const wsAdress = "ws://milan.local:8080";
+const wsAdress = "ws://10.200.32.19:8080";
 
 let xValue;
 let yValue;
