@@ -3,10 +3,25 @@
 /*jshint browser: true*/
 
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8080 });
+const wsPort = process.env.PORT || 8080
+const wss = new WebSocket.Server({ 
+  port: wsPort 
+});
 
 const fs = require('fs');
 const stream = fs.createWriteStream("motion data.txt");
+
+const express = require('express')
+const path = require('path')
+const PORT = process.env.PORT || 5000
+
+express()
+  .use(express.static(path.join(__dirname, 'public')))
+  .set('views', path.join(__dirname, 'views'))
+  .set('view engine', 'ejs')
+  .get('/', (req, res) => res.render('pages/index'))
+  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+
 
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
