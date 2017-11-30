@@ -2,11 +2,6 @@
 /*jshint asi: true */
 /*jshint browser: true*/
 
-const WebSocket = require('ws');
-const wsPort = process.env.PORT || 8080
-const wss = new WebSocket.Server({ 
-  port: wsPort 
-});
 
 const fs = require('fs');
 const stream = fs.createWriteStream("motion data.txt");
@@ -14,6 +9,13 @@ const stream = fs.createWriteStream("motion data.txt");
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
+
+const WebSocket = require('ws');
+const wsPort = process.env.PORT || 8080
+const wss = new WebSocket.Server({ express });
+//({ 
+//  port: wsPort 
+//});
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
