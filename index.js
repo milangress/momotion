@@ -10,9 +10,9 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
-const WebSocket = require('ws');
-const wsPort = process.env.PORT || 8080
-const wss = new WebSocket.Server({ express });
+//const WebSocket = require('ws');
+//const wsPort = process.env.PORT || 8080
+//const wss = new WebSocket.Server({ express });
 //({ 
 //  port: wsPort 
 //});
@@ -25,14 +25,14 @@ express()
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-    stream.write(message + "\n");
-  });
-
-  ws.send('ServerReady');
-});
+//wss.on('connection', function connection(ws) {
+//  ws.on('message', function incoming(message) {
+//    console.log('received: %s', message);
+//    stream.write(message + "\n");
+//  });
+//
+//  ws.send('ServerReady');
+//});
 
 
 //stream.once('open', (fd) => {
