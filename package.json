@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.16.2",
+    "ejs": "^2.5.7",
     "ws": "^3.3.2",
     "rita": "^1.2.12"
   },
