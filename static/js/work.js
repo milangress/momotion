@@ -3,8 +3,7 @@
 /*jshint browser: true*/
 
 //let gn = new GyroNorm();
-
-const wsAdress = "ws://10.200.32.19:8080";
+const wsAdress = location.origin.replace(/^http/, 'ws');
 
 let xValue;
 let yValue;

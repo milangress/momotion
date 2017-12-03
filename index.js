@@ -4,7 +4,7 @@
 
 
 const fs = require('fs');
-const stream = fs.createWriteStream("motion data.txt");
+const stream = fs.createWriteStream("public/motion_data.txt");
 
 const express = require('express')
 const path = require('path')
@@ -15,7 +15,6 @@ var app = express();
 //var htmlPath = path.join(__dirname, 'html');
 app.use(express.static(path.join(__dirname, 'static')));
 
-//app.use(express.static(htmlPath));
 
 var server = app.listen(PORT, function () {
     var host = 'localhost';
@@ -23,28 +22,19 @@ var server = app.listen(PORT, function () {
     console.log('listening on http://'+host+':'+port+'/');
 });
 
-//const WebSocket = require('ws');
-//const wsPort = process.env.PORT || 8080
-//const wss = new WebSocket.Server({ express });
-//({ 
-//  port: wsPort 
-//});
+const WebSocket = require('ws');
+const wss = new WebSocket.Server({ server });
 
-//express()
-//  .use(express.static(path.join(__dirname, 'public')))
-//  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-//  .set('views', __dirname + '/views')
-//  .engine('html', require('ejs').renderFile)
-//
 
-//wss.on('connection', function connection(ws) {
-//  ws.on('message', function incoming(message) {
-//    console.log('received: %s', message);
-//    stream.write(message + "\n");
-//  });
-//
-//  ws.send('ServerReady');
-//});
+
+wss.on('connection', function connection(ws) {
+  ws.on('message', function incoming(message) {
+    console.log('received: %s', message);
+    stream.write(message + "\n");
+  });
+
+  ws.send('ServerReady');
+});
 
 
 //stream.once('open', (fd) => {
