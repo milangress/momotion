@@ -12,8 +12,9 @@ const PORT = process.env.PORT || 5000
 
 var app = express();
 
-//var htmlPath = path.join(__dirname, 'html');
+
 app.use(express.static(path.join(__dirname, 'static')));
+app.use(express.static(__dirname + '/public')
 
 
 var server = app.listen(PORT, function () {
