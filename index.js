@@ -10,6 +10,19 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+var app = express();
+
+//var htmlPath = path.join(__dirname, 'html');
+app.use(express.static(path.join(__dirname, 'static')));
+
+//app.use(express.static(htmlPath));
+
+var server = app.listen(PORT, function () {
+    var host = 'localhost';
+    var port = server.address().port;
+    console.log('listening on http://'+host+':'+port+'/');
+});
+
 //const WebSocket = require('ws');
 //const wsPort = process.env.PORT || 8080
 //const wss = new WebSocket.Server({ express });
@@ -17,12 +30,12 @@ const PORT = process.env.PORT || 5000
 //  port: wsPort 
 //});
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .get('/', (req, res) => res.render('index.html'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
-
+//express()
+//  .use(express.static(path.join(__dirname, 'public')))
+//  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+//  .set('views', __dirname + '/views')
+//  .engine('html', require('ejs').renderFile)
+//
 
 //wss.on('connection', function connection(ws) {
 //  ws.on('message', function incoming(message) {
