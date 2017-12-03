@@ -14,7 +14,7 @@ var app = express();
 
 
 app.use(express.static(path.join(__dirname, 'static')));
-app.use(express.static(__dirname + '/public')
+app.use(express.static(__dirname + '/public'));
 
 
 var server = app.listen(PORT, function () {
