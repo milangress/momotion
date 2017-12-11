@@ -62,6 +62,7 @@ function handleMotionEvent(event) {
   let xValue = event.acceleration.x;
   let yValue = event.acceleration.y;
   let zValue = event.acceleration.z;
+  let timestamp = Date.now();
 
 
   document.querySelector(".xdata").innerText = xValue;
@@ -69,9 +70,10 @@ function handleMotionEvent(event) {
   document.querySelector(".zdata").innerText = zValue;
 
   movementData = {
-      xdata: xValue,
-      ydata: yValue,
-      zdata: zValue
+      x: xValue,
+      y: yValue,
+      z: zValue,
+      t: timestamp
     }
     //  writeToScreen(JSON.stringify(movementData));
 

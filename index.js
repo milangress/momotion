@@ -32,6 +32,8 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
     console.log('received: %s', message);
     stream.write(message + "\n");
+    var obj = JSON.parse(str);
+
   });
 
   ws.send('ServerReady');
