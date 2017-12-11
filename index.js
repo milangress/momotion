@@ -4,7 +4,6 @@
 
 
 const fs = require('fs');
-const stream = fs.createWriteStream("public/motion_data.txt");
 
 const express = require('express')
 const path = require('path')
@@ -26,16 +25,36 @@ var server = app.listen(PORT, function () {
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ server });
 
+let writing = 0
 
 
-wss.on('connection', function connection(ws) {
+
+
+wss.on('connection', function connection(ws, req) {
+  const ip = req.connection.remoteAddress;
   ws.on('message', function incoming(message) {
-    console.log('received: %s', message);
-    stream.write(message + "\n");
+    var logStream = fs.createWriteStream('public/mo_data_' + ip + '.json', {'flags': 'a'});
+    console.log('written to public/mo_data_' + ip + '.txt')
+
+    if (message === 'END') {
+      writing = 0
+    }
+
+    if (writing){
+      logStream.write(message + "\n");
+    } else {
+      console.log (message)
+    }
+
+    if (message === 'START') {
+      writing = 1
+    }
+
   });
 
   ws.send('ServerReady');
 });
+
 
 
 //stream.once('open', (fd) => {
