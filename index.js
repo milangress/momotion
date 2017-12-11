@@ -33,7 +33,6 @@ let writing = 0
 wss.on('connection', function connection(ws, req) {
   const ip = req.connection.remoteAddress;
   ipPath = ip.replace(/:/g, '');
-  ipPath = ipPath.replace(/./g, '');
   ws.on('message', function incoming(message) {
     var logStream = fs.createWriteStream('public/mo_data_' + ipPath + '.json', {'flags': 'a'});
     console.log('written to public/mo_data_' + ipPath + '.json')
