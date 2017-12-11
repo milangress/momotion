@@ -6,7 +6,6 @@
   "dependencies": {
     "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "firebase-admin": "^5.5.1",
     "rita": "^1.2.12",
     "ws": "^3.3.2"
   },
