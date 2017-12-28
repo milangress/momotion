@@ -37,24 +37,39 @@ wss.on('connection', function connection(ws, req) {
     var logStream = fs.createWriteStream('public/mo_data_' + ipPath + '.json', {'flags': 'a'});
     console.log('written to public/mo_data_' + ipPath + '.json')
 
-    if (message === 'END') {
-      writing = 0
-    }
-
-    if (writing){
-      logStream.write(message + "\n");
-    } else {
-      console.log (message)
-    }
-
-    if (message === 'START') {
-      writing = 1
-    }
+    let writeMsg = parseWSData(message);
+    logStream.write(writeMsg + "\n");
 
   });
 
   ws.send('ServerReady');
 });
+
+const parseWSData = function(wsMsg) {
+      if (wsMsg === 'END') {
+      writing = 0
+    }
+
+    if (writing){
+      return wsMsg;
+    } else {
+      console.log (wsMsg)
+    }
+
+    if (wsMsg === 'START') {
+      writing = 1
+    }
+}
+
+//remove double entrys in arrays
+const onlyUnique = function(arr) {
+  return [...new Set(arr)];
+}
+
+//
+const makeTimeRelative = function(arr) {
+
+}
 
 
 
