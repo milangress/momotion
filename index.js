@@ -34,31 +34,44 @@ wss.on('connection', function connection(ws, req) {
   const ip = req.connection.remoteAddress;
   ipPath = ip.replace(/:/g, '');
   ws.on('message', function incoming(message) {
-    var logStream = fs.createWriteStream('public/mo_data_' + ipPath + '.json', {'flags': 'a'});
-    console.log('written to public/mo_data_' + ipPath + '.json')
+//    var logStream = fs.createWriteStream('public/mo_data_' + ipPath + '.json', {'flags': 'a'});
+//    console.log('written to public/mo_data_' + ipPath + '.json')
 
     let writeMsg = parseWSData(message);
-    logStream.write(writeMsg + "\n");
+
+
+    fs.writeFile('public/mo_data_' + ipPath + '.json', JSON.stringify(writeMsg, null, 2) , 'utf-8');
+//    logStream.write(writeMsg);
 
   });
 
   ws.send('ServerReady');
 });
 
+let movementObject = {};
+
 const parseWSData = function(wsMsg) {
-      if (wsMsg === 'END') {
-      writing = 0
-    }
+//  console.log(`all: ${wsMsg}`)
 
-    if (writing){
-      return wsMsg;
-    } else {
-      console.log (wsMsg)
-    }
+  wsMsg = JSON.parse(wsMsg);
 
-    if (wsMsg === 'START') {
-      writing = 1
+  if (wsMsg.type === 'console'){
+    console.log (wsMsg.msg)
+    if (wsMsg.msg === 'END') {
+      console.log(movementObject)
     }
+  }
+
+  if (wsMsg.type === 'moveType'){
+    movementObject.movementType = wsMsg.msg;
+    movementObject.data = []
+  }
+  if (wsMsg.type === 'movementData'){
+//    console.log(`raw: ${wsMsg}`)
+//    console.log(`mD: ${wsMsg.msg}`)
+    movementObject.data.push(wsMsg.msg);
+  }
+  return movementObject;
 }
 
 //remove double entrys in arrays

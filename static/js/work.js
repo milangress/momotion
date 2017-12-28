@@ -26,10 +26,10 @@ selectMovementTypes();
 
 function recordMotion() {
 
-  websocket.send(JSON.stringify(movementData) + ',')
+  websocket.send(JSON.stringify(movementData))
   if (count > 300) {
-    websocket.send("]}");
-    websocket.send("END");
+//    websocket.send("]}");
+    websocket.send(declareMSG("END"));
     writeToScreen("END recording")
 //    websocket.close();
     clearInterval(recordInterval);
@@ -47,17 +47,25 @@ function startRecordingMotion() {
     var audio = new Audio('res/start-beeps.wav');
     audio.play();
     setTimeout(function () {
-      websocket.send("START")
-      websocket.send("{")
+//      websocket.send("START")
+//      websocket.send("{")
 //      let mtString = '"movementType": ' + movementTypes[randomselect] + ',';
 //      websocket.send(mtString);
-      websocket.send('"' + movementTypes[randomselect] + '": [')
+      websocket.send(declareMSG(movementTypes[randomselect], 'moveType'));
       writeToScreen("START recording")
       recordInterval = setInterval(recordMotion, 10);
     }, 3800);
   } else {
     writeToScreen("no websocket open");
   }
+}
+
+function declareMSG(msg, type = "console") {
+  let sendMessage = {
+    type: type,
+    msg: msg,
+  }
+  return JSON.stringify(sendMessage);
 }
 
 
@@ -74,10 +82,13 @@ function handleMotionEvent(event) {
   document.querySelector(".zdata").innerText = zValue;
 
   movementData = {
-      x: xValue,
-      y: yValue,
-      z: zValue,
-      t: timestamp
+      type: "movementData",
+      "msg": {
+        x: xValue,
+        y: yValue,
+        z: zValue,
+        t: timestamp
+      }
     }
     //  writeToScreen(JSON.stringify(movementData));
 
@@ -96,7 +107,7 @@ websocket = new WebSocket(wsAdress);
 
 // When the connection is open, send some data to the server
 websocket.onopen = function () {
-  websocket.send('ConnectionOpen'); // Send the message 'Ping' to the server
+  websocket.send(declareMSG("ConnectionOpen")); // Send the message 'Ping' to the server
 };
 
 
