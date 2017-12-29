@@ -49,14 +49,15 @@ wss.on('connection', function connection(ws, req) {
 async function waitForData (message) {
 
   try {
-    let parsedData = await createObjectFromWS(message);
-    console.log(`parsed data: ${message}`)
-    await writeDataToFile(parsedData);
-    console.log(`written data: ${parsedData}`)
+    let dataObject = await createObjectFromWS(message);
+
+//    console.log(`parse data: ${JSON.stringify(dataObject)}`)
+    await parseData(dataObject);
+
   }
 
   catch(e) {
-    console.err(e);
+    console.log(e);
   }
 };
 
@@ -73,7 +74,7 @@ function createObjectFromWS(wsMsg) {
       if (wsMsg.type === 'console') {
         console.log(wsMsg.msg)
         if (wsMsg.msg === 'END') {
-          console.log(`if end detected`);
+          console.log(`resolved promise`);
           resolve(movementObject);
         }
       }
@@ -90,14 +91,34 @@ function createObjectFromWS(wsMsg) {
     }
 )};
 
+const parseData = function(obj) {
+//  const removedDuplicates = onlyUnique(obj);
+
+  obj.data = onlyUnique(obj.data)
+
+  const relativeTime = makeTimeRelative(obj);
+
+  writeDataToFile(relativeTime);
+
+
+
+}
+
 
 //remove double entrys in arrays
 const onlyUnique = function(arr) {
-  return [...new Set(arr)];
+  console.log('onlyUnique Function');
+  return Array.from(new Set(arr.map(JSON.stringify))).map(JSON.parse);
 }
 
 //
-const makeTimeRelative = function(arr) {
+const makeTimeRelative = function (obj) {
+  console.log('makeTimeRelative Function');
+  const initialTime = obj.data[0].t
+  for (let data of obj.data) {
+    data.t = data.t - initialTime +1;
+  }
+  return obj;
 
 }
 
@@ -108,7 +129,7 @@ const writeDataToFile = function(data) {
 //      let jsonPath = 'public/mo_data_' + ipPath + '.json'
       let jsonPath = 'public/mo_data_123.json'
       console.log(`written to ${jsonPath}`)
-      fs.writeFile(jsonPath, JSON.stringify(data, null, 2) , 'utf-8');
+      fs.appendFileSync(jsonPath, JSON.stringify(data, null, 2) , 'utf-8');
 
 }
 
