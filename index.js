@@ -35,12 +35,10 @@ wss.on('connection', function connection(ws, req) {
   ipPath = ip.replace(/:/g, '');
   ws.on('message', function incoming(message) {
 //    var logStream = fs.createWriteStream('public/mo_data_' + ipPath + '.json', {'flags': 'a'});
-//    console.log('written to public/mo_data_' + ipPath + '.json')
 
-    let writeMsg = parseWSData(message);
+    waitForData(message);
 
 
-    fs.writeFile('public/mo_data_' + ipPath + '.json', JSON.stringify(writeMsg, null, 2) , 'utf-8');
 //    logStream.write(writeMsg);
 
   });
@@ -48,31 +46,50 @@ wss.on('connection', function connection(ws, req) {
   ws.send('ServerReady');
 });
 
+async function waitForData (message) {
+
+  try {
+    let parsedData = await createObjectFromWS(message);
+    console.log(`parsed data: ${message}`)
+    await writeDataToFile(parsedData);
+    console.log(`written data: ${parsedData}`)
+  }
+
+  catch(e) {
+    console.err(e);
+  }
+};
+
+
 let movementObject = {};
 
-const parseWSData = function(wsMsg) {
-//  console.log(`all: ${wsMsg}`)
 
-  wsMsg = JSON.parse(wsMsg);
+function createObjectFromWS(wsMsg) {
 
-  if (wsMsg.type === 'console'){
-    console.log (wsMsg.msg)
-    if (wsMsg.msg === 'END') {
-      console.log(movementObject)
+      return new Promise((resolve, reject) => {
+
+      wsMsg = JSON.parse(wsMsg);
+
+      if (wsMsg.type === 'console') {
+        console.log(wsMsg.msg)
+        if (wsMsg.msg === 'END') {
+          console.log(`if end detected`);
+          resolve(movementObject);
+        }
+      }
+
+      if (wsMsg.type === 'moveType') {
+        movementObject.movementType = wsMsg.msg;
+        movementObject.data = []
+      }
+      if (wsMsg.type === 'movementData') {
+        //    console.log(`raw: ${wsMsg}`)
+        //    console.log(`mD: ${wsMsg.msg}`)
+        movementObject.data.push(wsMsg.msg);
+      }
     }
-  }
+)};
 
-  if (wsMsg.type === 'moveType'){
-    movementObject.movementType = wsMsg.msg;
-    movementObject.data = []
-  }
-  if (wsMsg.type === 'movementData'){
-//    console.log(`raw: ${wsMsg}`)
-//    console.log(`mD: ${wsMsg.msg}`)
-    movementObject.data.push(wsMsg.msg);
-  }
-  return movementObject;
-}
 
 //remove double entrys in arrays
 const onlyUnique = function(arr) {
@@ -81,6 +98,17 @@ const onlyUnique = function(arr) {
 
 //
 const makeTimeRelative = function(arr) {
+
+}
+
+const writeDataToFile = function(data) {
+
+//      writeMsg.data = onlyUnique(writeMsg.data);
+
+//      let jsonPath = 'public/mo_data_' + ipPath + '.json'
+      let jsonPath = 'public/mo_data_123.json'
+      console.log(`written to ${jsonPath}`)
+      fs.writeFile(jsonPath, JSON.stringify(data, null, 2) , 'utf-8');
 
 }
 
