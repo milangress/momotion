@@ -100,8 +100,6 @@ const parseData = function(obj) {
 
   writeDataToFile(relativeTime);
 
-
-
 }
 
 
@@ -120,6 +118,22 @@ const makeTimeRelative = function (obj) {
   }
   return obj;
 
+}
+
+const splitArray = function(arr, startVal, endVal) {
+
+  if (startVal === !0) {
+  let startPos = arr.findIndex(array => {
+    return array.t === startVal
+  });
+  } else {
+    let startPos = 0;
+  }
+
+  let endPos = arr.findIndex(array => {
+    return array.t === endVal;
+  });
+  return arr.splice(startPos, endPos);
 }
 
 const writeDataToFile = function(data) {

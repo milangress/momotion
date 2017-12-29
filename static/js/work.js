@@ -13,21 +13,33 @@ var websocket;
 let count;
 let recordInterval;
 let recoding = false;
-let movementTypes = ["soft", "hard", "fast", "slow", "fluently", "interrupted"]
-let randomselect = Math.floor(Math.random() * movementTypes.length);
+
+const recordingModel = true;
+
+let movementTypes = ["soft", "hard", "sustained", "sudden", "strong", "light"]
+
+
 
 writeToScreen("javascript ready");
 
 function selectMovementTypes() {
+
   let movementTypesDisplay = document.querySelector("#type");
-  movementTypesDisplay.innerHTML = movementTypes[randomselect];
+  if (recordingModel) {
+  movementTypes = movementTypes[0]
+  } else {
+  let randomselect = Math.floor(Math.random() * movementTypes.length);
+  movementTypes = movementTypes[randomselect];
+  }
+  movementTypesDisplay.innerHTML = movementTypes;
+
 }
 selectMovementTypes();
 
 function recordMotion() {
 
   websocket.send(JSON.stringify(movementData))
-  if (count > 300) {
+  if (count > 100) {
 //    websocket.send("]}");
     websocket.send(declareMSG("END"));
     writeToScreen("END recording")
@@ -51,7 +63,7 @@ function startRecordingMotion() {
 //      websocket.send("{")
 //      let mtString = '"movementType": ' + movementTypes[randomselect] + ',';
 //      websocket.send(mtString);
-      websocket.send(declareMSG(movementTypes[randomselect], 'moveType'));
+      websocket.send(declareMSG(movementTypes, 'moveType'));
       writeToScreen("START recording")
       recordInterval = setInterval(recordMotion, 10);
     }, 3800);
@@ -71,9 +83,9 @@ function declareMSG(msg, type = "console") {
 
 function handleMotionEvent(event) {
 
-  let xValue = event.acceleration.x;
-  let yValue = event.acceleration.y;
-  let zValue = event.acceleration.z;
+  let xValue = event.acceleration.x.toFixed(3);
+  let yValue = event.acceleration.y.toFixed(3);
+  let zValue = event.acceleration.z.toFixed(3);
   let timestamp = Date.now();
 
 
