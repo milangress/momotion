@@ -39,7 +39,7 @@ selectMovementTypes();
 function recordMotion() {
 
   websocket.send(JSON.stringify(movementData))
-  if (count > 100) {
+  if (count > 3000) {
 //    websocket.send("]}");
     websocket.send(declareMSG("END"));
     writeToScreen("END recording")
