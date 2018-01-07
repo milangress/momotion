@@ -1,6 +1,6 @@
 :root {
   --main-nav-size: calc(0.6em + 1vw);
-  --bg-color: #000;
+  --bg-color: #141414;
   --txt-color: #fff;
 }
 
@@ -19,7 +19,7 @@
 
 
 body {
-  background: #000;
+  background: var(--bg-color);
   color: #fff;
   box-sizing: border-box;
   
@@ -37,13 +37,21 @@ a {
 }
 .gedicht {
   font-family: inknut_antiqualight;
-  font-size: calc(1.5em + 1vw);
+  font-size: calc(0.75em + 2vw);
   padding-right: 30vh;
   letter-spacing: -0.02em;
   line-height: 1.3;
-  
+}
+@media (max-width: 800px) {
+  .gedicht {
+    padding-right: 10vh;
+  }
 }
 .move-marker {
+/*
+  underline:
+  https://css-tricks.com/styling-underlines-web/
+*/
   border-bottom: 2px solid var(--txt-color);
   display: inline-block;
   line-height: 0.85;
@@ -60,9 +68,12 @@ main {
   height: 100vh
 }
 
-.gedicht-wrapper {
+
+
+main>section {
   display: flex;
   flex-direction: row;
+  transition: all 1s;
 }
 
 
@@ -95,4 +106,23 @@ main {
 
 .about:hover>span {
   opacity: 1;
+}
+
+.text-body {
+  transition: all 1s;
+}
+
+/** This class will hide all the body be default **/
+.hide{
+  visibility: hidden;
+  opacity: 0;
+  width: 0;
+}
+
+/** This class will show the body if it has a parent with active       class
+**/
+.active {
+   visibility: visible;
+  opacity: 1;
+  width: 100%;
 }
