@@ -15,7 +15,18 @@ const loadNewPoem = function() {
 }
 
 
-
+$( "#intro" ).click(function() {
+  $("main").animate({
+    left: "0%"
+  }, 1000, function() {
+    // Animation complete.
+  });
+  $(this).animate({
+    left: "100%"
+  }, 1000, function() {
+    // Animation complete.
+  });
+});
 
 //var aboutLink = document.querySelector('.about');
 //aboutLink.addEventListener('click', showAbout);
