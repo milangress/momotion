@@ -1,19 +1,42 @@
-const aboutLink = document.querySelector('.about');
-aboutLink.addEventListener('click', showAbout);
-
-  const aboutPage = document.querySelector('.about-site')
-  const gedicht = document.querySelector('.main-text')
-  aboutPage.classList.add("hide");
-
-  
-
-function showAbout(event) {
+$(".panel").click(function(event) {
   event.preventDefault();
-  aboutPage.classList.remove("hide");
-  aboutPage.classList.add("active");
-  gedicht.classList.add("hide");
-  gedicht.classList.remove("active");
+  let link = event.currentTarget.dataset.link
+  
+  if (link === "nextPoem"){
+    loadNewPoem();
+  } else {
+    $(".panel").addClass("collapse");
+    $(this).removeClass("collapse");
+  }
+});
+
+const loadNewPoem = function() {
+  console.log("load new Poem")
 }
+
+
+
+
+//var aboutLink = document.querySelector('.about');
+//aboutLink.addEventListener('click', showAbout);
+//
+//
+//var MouseX = 
+//aboutLink.style.top("MouseX")
+//
+//  const aboutPage = document.querySelector('.about-site')
+//  const gedicht = document.querySelector('.main-text')
+//  aboutPage.classList.add("hide");
+//
+//  
+//
+//function showAbout(event) {
+//  event.preventDefault();
+//  aboutPage.classList.remove("hide");
+//  aboutPage.classList.add("active");
+//  gedicht.classList.add("hide");
+//  gedicht.classList.remove("active");
+//}
 
 //function initAccordion(accordionElem){
 //  

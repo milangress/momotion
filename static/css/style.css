@@ -23,6 +23,9 @@ body {
   color: #fff;
   box-sizing: border-box;
   
+  font-family: AkzidenzGroteskBQ-BoldExt;
+  
+  
   -moz-osx-font-smoothing: grayscale;   /* Firefox */
   -webkit-font-smoothing:  antialiased; /* WebKit  */
 }
@@ -30,6 +33,7 @@ body {
 h1 {
   font-family: AkzidenzGroteskBQ-BoldExt;
   font-size: var(--main-nav-size);
+  text-transform: uppercase;
 }
 a {
   text-decoration: none;
@@ -70,10 +74,30 @@ main {
 
 
 
-main>section {
+section {
+  flex-shrink: 1;
+  flex-basis: auto;
+  flex: 1;
+  
+  overflow: hidden;
   display: flex;
   flex-direction: row;
-  transition: all 1s;
+  transition: all 0.5s;
+  
+  min-width: calc(1.4em + 1vw);
+}
+
+.collapse {
+    flex-grow: 0.0001;
+}
+
+
+.collapse>.text-body {
+  display: none;
+}
+
+.next-poem {
+  max-width: calc(1.5em + 1vw);
 }
 
 
@@ -98,6 +122,9 @@ main>section {
   border-left: none;
   padding-right: 10px;
 }
+.gedicht-headline {
+  border: none
+}
 
 .about span {
   opacity: 0;
@@ -109,20 +136,21 @@ main>section {
 }
 
 .text-body {
-  transition: all 1s;
+  
+  overflow: hidden;
+ transition: all 1s;
+}
+.text-body>*{
+    width: 60vw;
 }
 
 /** This class will hide all the body be default **/
 .hide{
-  visibility: hidden;
-  opacity: 0;
   width: 0;
 }
 
 /** This class will show the body if it has a parent with active       class
 **/
 .active {
-   visibility: visible;
-  opacity: 1;
   width: 100%;
 }

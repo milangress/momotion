@@ -8,6 +8,11 @@
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+  crossorigin="anonymous"></script>
+  
   <script src="js/frontend.js" defer></script>
 
 </head>
@@ -15,6 +20,7 @@
 <body>
 
   <main>
+   
     <section class="panel">
       <div class="balken balken-links gedicht-headline">
         <h1>Extasy</h1>
@@ -30,17 +36,17 @@
         </div>
       </div>
     </section>
-    <section>
+    <section class="panel collapse next-poem" data-link="nextPoem">
       <div class="balken">
         <h1><a href="">Next Poem</a></h1>
       </div>
     </section>
-    <section>
+    <section class="panel collapse">
       <div class="balken">
-        <h1><a href="">Make one Yourself</a></h1>
+        <h1><a href="">Create Your own</a></h1>
       </div>
     </section>
-    <section class="panel">
+    <section class="panel collapse">
       <div class="balken">
         <h1><a class="about" href="">Motion Poetry <span> about </span></a></h1>
       </div>
@@ -50,6 +56,7 @@
 
       </div>
     </section>
+    
   </main>
 
 </body>
