@@ -16,17 +16,26 @@ const loadNewPoem = function() {
 
 
 $( "#intro" ).click(function() {
-  $("main").animate({
+  hideIntro();
+});
+
+$(".intro-text").hide().delay(1000).fadeIn(4000);
+
+
+const hideIntro = function() {
+    $("main").animate({
     left: "0%"
   }, 1000, function() {
     // Animation complete.
   });
-  $(this).animate({
+  $("#intro").animate({
     left: "100%"
   }, 1000, function() {
     // Animation complete.
   });
-});
+}
+
+setTimeout(function(){ hideIntro(); }, 10000);
 
 //var aboutLink = document.querySelector('.about');
 //aboutLink.addEventListener('click', showAbout);

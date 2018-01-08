@@ -16,6 +16,18 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Akzidenz';
+    src: url('../fonts/AkzidenzGrotesk-Extended.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Akzidenz';
+    src: url('../fonts/AkzidenzGrotesk-BoldExtended.otf');
+    font-weight: 700;
+    font-style: normal;
+}
 
 
 body {
@@ -23,7 +35,7 @@ body {
   color: #fff;
   box-sizing: border-box;
   
-  font-family: AkzidenzGroteskBQ-BoldExt;
+  font-family: Akzidenz;
   
   
   -moz-osx-font-smoothing: grayscale;   /* Firefox */
@@ -31,7 +43,7 @@ body {
 }
 
 h1 {
-  font-family: AkzidenzGroteskBQ-BoldExt;
+  font-family: Akzidenz;
   font-size: var(--main-nav-size);
   text-transform: uppercase;
 }
@@ -143,9 +155,11 @@ section {
   overflow: hidden;
  transition: all 1s;
 }
+/*
 .text-body>*{
     width: 60vw;
 }
+*/
 
 .intro {
   z-index: 99;
@@ -155,6 +169,7 @@ section {
   background: var(--bg-color);
 }
 .intro .intro-text {
+  color: var(--bg-color);
   max-width: 50vw;
   position: absolute;
   top: 50%;
@@ -169,7 +184,7 @@ transform: translate(-50%, -50%);
 .intro .path {
   stroke-dasharray: 5000;
   stroke-dashoffset: 5000;
-  animation: dash 7s cubic-bezier(0.645, 0.045, 0.355, 1) normal infinite;
+  animation: dash 12s cubic-bezier(0.645, 0.045, 0.355, 1) normal infinite;
 }
 
 @keyframes dash {
