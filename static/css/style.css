@@ -31,6 +31,7 @@
 
 
 body {
+  
   background: var(--bg-color);
   color: #fff;
   box-sizing: border-box;
@@ -52,6 +53,7 @@ a {
   color: #fff;
 }
 .gedicht {
+
   font-family: inknut_antiqualight;
   font-size: calc(0.75em + 2vw);
   padding-right: 30vh;
@@ -76,6 +78,7 @@ a {
     1.5px -1.5px var(--bg-color),
     -1.5px 1.5px var(--bg-color),
     -1.5px -1.5px var(--bg-color);
+  cursor: none;
 }
 
 main {
@@ -151,15 +154,14 @@ section {
 }
 
 .text-body {
-  
-  overflow: hidden;
+  overflow: scroll;
+  width: 100%;
+  cursor: default;
  transition: all 1s;
 }
-/*
 .text-body>*{
     width: 60vw;
 }
-*/
 
 .intro {
   z-index: 99;
@@ -182,14 +184,15 @@ transform: translate(-50%, -50%);
 }
 
 .intro .path {
-  stroke-dasharray: 5000;
-  stroke-dashoffset: 5000;
-  animation: dash 12s cubic-bezier(0.645, 0.045, 0.355, 1) normal infinite;
+/*  24881.9765625*/
+  stroke-dasharray: 24881;
+/*  stroke-dashoffset: 20881;*/
+  animation: dash 17s cubic-bezier(0.645, 0.045, 0.355, 1) normal infinite;
 }
 
 @keyframes dash {
   from {
-    stroke-dashoffset: 5000;
+    stroke-dashoffset: 24881;
   }
   to {
     stroke-dashoffset: 0;

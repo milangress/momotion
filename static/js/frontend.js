@@ -12,6 +12,7 @@ $(".panel").click(function(event) {
 
 const loadNewPoem = function() {
   console.log("load new Poem")
+//  TODO
 }
 
 
@@ -19,7 +20,7 @@ $( "#intro" ).click(function() {
   hideIntro();
 });
 
-$(".intro-text").hide().delay(1000).fadeIn(4000);
+$(".intro-text").hide().delay(2000).fadeIn(4000);
 
 
 const hideIntro = function() {
@@ -35,7 +36,7 @@ const hideIntro = function() {
   });
 }
 
-setTimeout(function(){ hideIntro(); }, 10000);
+setTimeout(function(){ hideIntro(); }, 15000);
 
 //var aboutLink = document.querySelector('.about');
 //aboutLink.addEventListener('click', showAbout);
