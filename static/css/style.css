@@ -154,8 +154,9 @@ section {
 }
 
 .text-body {
-  overflow: scroll;
   width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
   cursor: default;
  transition: all 1s;
 }
