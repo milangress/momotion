@@ -38,6 +38,51 @@ const hideIntro = function() {
 
 setTimeout(function(){ hideIntro(); }, 15000);
 
+
+// zeige Beschreibung bei hover an:
+$('body').append('<div id="hoverbox"/>');
+$(document).mousemove(function(mTC){
+        var textwith = $('#hoverbox').width();
+        $('#hoverbox').css({top:(mTC.clientY+1)+'px',left:(mTC.clientX)+'px'});
+    });
+
+$('.move-marker').hover(handlerIn, handlerOut)
+
+let bsTitel
+
+function handlerIn(event) {
+  console.log(this)
+  bsTitel = $(this).attr('data-mt');
+  $('#hoverbox').fadeTo(300, 1).html( bsTitel );
+  
+}
+function handlerOut() {
+   $('#hoverbox').hide().html('');
+   $(this).attr('data-mt', bsTitel);
+  
+}
+
+//$.fn.beschreibung = function() {
+//    'use strict';    
+//    var bsElement = this;    
+//    $('body').append('<div id="hoverbox"/>');
+//    $(document).mousemove(function(mTC){
+//        var textwith = $('#hoverbox').width();
+//        $('#hoverbox').css({top:(mTC.clientY+1)+'px',left:(mTC.clientX-textwith/2)+'px'});
+//    });
+//    bsElement.each(function(){
+//     var bsSub = $(this);
+//     var bsTitel = bsSub.attr('title');   
+//     bsSub.hover(function(){
+//        $('#hoverbox').fadeTo(300, 1).html( bsTitel );        
+//        bsSub.attr('title', '');
+//    },function(){
+//        $('#hoverbox').hide().html('');
+//        bsSub.attr('title', bsTitel);
+//    });
+// });
+//};
+
 //var aboutLink = document.querySelector('.about');
 //aboutLink.addEventListener('click', showAbout);
 //
