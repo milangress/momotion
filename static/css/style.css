@@ -159,7 +159,10 @@ section {
   overflow-x: hidden;
   cursor: default;
  transition: all 1s;
-  padding-right: 150px;
+/*  padding-right: 150px;*/
+}
+.about-site, .diy-site{
+  margin-top: 10px;
 }
 
 /*
@@ -168,7 +171,7 @@ section {
 }
 */
 
-.text-body>*{
+.text-body>.gedicht{
     width: 60vw;
 }
 
@@ -206,4 +209,18 @@ transform: translate(-50%, -50%);
   to {
     stroke-dashoffset: 0;
   }
+}
+
+
+#hoverbox {
+  cursor:none;
+  pointer-events: none;
+  display:none;
+  position: fixed;
+  border: white 2px solid;
+  background: var(--bg-color);
+  padding-left: 6px;
+  padding-right:5px;
+  color: white;
+  z-index: 99;
 }
