@@ -16,7 +16,7 @@ let recoding = false;
 
 const recordingModel = true;
 
-let movementTypes = ["soft", "hard", "sustained", "sudden", "strong", "light"]
+let movementTypes = ["soft", "hard", "sustained", "sudden", "strong", "light", "fast", "slow"]
 
 
 
