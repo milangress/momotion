@@ -159,7 +159,15 @@ section {
   overflow-x: hidden;
   cursor: default;
  transition: all 1s;
+  padding-right: 150px;
 }
+
+/*
+.text-body::-webkit-scrollbar {
+    display: none;
+}
+*/
+
 .text-body>*{
     width: 60vw;
 }
