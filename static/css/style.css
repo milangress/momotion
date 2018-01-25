@@ -3,39 +3,34 @@
   --bg-color: #141414;
   --txt-color: #fff;
 }
-
-
 @font-face {
-    font-family: 'JudeBold';
-    src: url('../fonts/JudeBold.woff2') format('woff2'),
-        url('../fonts/JudeBold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Akzidenz';
-    src: url('../fonts/AkzidenzGrotesk-Extended.otf');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'JudeBold';
+  src: url('../fonts/JudeBold.woff2') format('woff2'), url('../fonts/JudeBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'Akzidenz';
-    src: url('../fonts/AkzidenzGrotesk-BoldExtended.otf');
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'Akzidenz';
+  src: url('../fonts/AkzidenzGrotesk-Extended.otf');
+  font-weight: normal;
+  font-style: normal;
 }
-
-
+@font-face {
+  font-family: 'Akzidenz';
+  src: url('../fonts/AkzidenzGrotesk-BoldExtended.otf');
+  font-weight: 700;
+  font-style: normal;
+}
 body {
   background: var(--bg-color);
   color: #fff;
   box-sizing: border-box;
   font-family: Akzidenz;
-  -moz-osx-font-smoothing: grayscale;   /* Firefox */
-  -webkit-font-smoothing:  antialiased; /* WebKit  */
+  -moz-osx-font-smoothing: grayscale;
+  /* Firefox */
+  -webkit-font-smoothing: antialiased;
+  /* WebKit  */
 }
-
 h1 {
   font-size: var(--main-nav-size);
   text-transform: uppercase;
@@ -44,10 +39,7 @@ a {
   text-decoration: none;
   color: #fff;
 }
-
-
 .gedicht {
-
   font-family: JudeBold;
   font-size: calc(0.8em + 2vw);
   padding-right: 30vh;
@@ -59,19 +51,18 @@ a {
   }
 }
 .move-marker {
-/*
+  /*
   underline:
   https://css-tricks.com/styling-underlines-web/
 */
   text-shadow: -2px -2px var(--bg-color), -2px 2px var(--bg-color), 2px -2px var(--bg-color), 2px 2px var(--bg-color);
   background-size: 1px 1em;
   -webkit-box-shadow: inset 0 -0.15em var(--bg-color), inset 0 -0.2em var(--txt-color);
-          box-shadow: inset 0 -0.15em var(--bg-color), inset 0 -0.2em var(--txt-color);
+  box-shadow: inset 0 -0.15em var(--bg-color), inset 0 -0.2em var(--txt-color);
   display: inline;
   line-height: 0.85;
   cursor: none;
 }
-
 main {
   left: -100%;
   width: 100vw;
@@ -80,51 +71,34 @@ main {
   flex-direction: row;
   height: 100vh
 }
-
-
-
 section {
   flex-shrink: 1;
   flex-basis: auto;
   flex: 1;
-  
   overflow: hidden;
   display: flex;
   flex-direction: row;
   transition: all 0.5s;
-  
   min-width: calc(1.5em + 1vw);
 }
-
 .collapse {
-    flex-grow: 0.0001;
+  flex-grow: 0.0001;
 }
-
-
 .collapse>.text-body {
   display: none;
 }
-
 .next-poem {
   max-width: calc(1.5em + 1vw);
 }
-
-
-
 .balken h1 {
   transform: rotate(180deg);
-  white-space:nowrap;
+  white-space: nowrap;
   display: inline-block;
-
 }
-
 .rotate-box {
   margin: calc(0.5em + 1vw) 0 0 0;
   transform: rotate(90deg);
 }
-
-
-
 .balken {
   width: var(--main-nav-size);
   border-left: 2px solid #fff;
@@ -132,30 +106,26 @@ section {
   margin-right: 10px;
   padding-left: 5px;
 }
-
 .gedicht-headline {
   border: none
 }
 
 /* Show "About" when hovering "Motion Poetry"*/
+
 .about span {
   opacity: 0;
   transition: opacity 0.3s;
 }
-
 .about:hover>span {
   opacity: 1;
 }
-
-
-
 .text-body {
   width: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   cursor: default;
- transition: all 1s;
-/*  padding-right: 150px;*/
+  transition: all 1s;
+  /*  padding-right: 150px;*/
 }
 
 /*
@@ -164,16 +134,14 @@ https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-wi
 */
 
 .text-body::-webkit-scrollbar {
- display: none;
+  display: none;
 }
-
-.about-site, .diy-site{
+.about-site,
+.diy-site {
   margin: calc(0.8em + 1vw) 0 0 0;
 }
-
-
-.text-body>.gedicht{
-    width: 60vw;
+.text-body>.gedicht {
+  width: 60vw;
 }
 
 /*Display Intro on first visit*/
@@ -190,21 +158,18 @@ https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-wi
   max-width: 50vw;
   position: absolute;
   top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
-
 .intro svg {
   width: 100%;
 }
-
 .intro .path {
-/*  24881.9765625*/
+  /*  24881.9765625*/
   stroke-dasharray: 24881;
-/*  stroke-dashoffset: 20881;*/
+  /*  stroke-dashoffset: 20881;*/
   animation: dash 17s cubic-bezier(0.645, 0.045, 0.355, 1) normal infinite;
 }
-
 @keyframes dash {
   from {
     stroke-dashoffset: 24881;
@@ -216,17 +181,18 @@ transform: translate(-50%, -50%);
 
 /*END INTRO*/
 
+
 /*TOOLS*/
 
 #hoverbox {
-  cursor:none;
+  cursor: none;
   pointer-events: none;
-  display:none;
+  display: none;
   position: fixed;
   border: white 2px solid;
   background: var(--bg-color);
   padding-left: 6px;
-  padding-right:5px;
+  padding-right: 5px;
   color: white;
   z-index: 99;
   font-size: calc(0.4em + 1vw);
@@ -236,18 +202,19 @@ transform: translate(-50%, -50%);
 
 
 /*"Create Your own" Site*/
+
 .diy-site {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
 .explainer-img {
   margin: 10px;
   width: 48%;
 }
 .explainer-img img {
-  max-width:100%;
-max-height:100%;
+  max-width: 100%;
+  max-height: 100%;
 }
+
 /*END "Create Your own"*/
