@@ -125,11 +125,15 @@ section {
 
 
 .balken h1 {
+  transform: rotate(180deg);
+  white-space:nowrap;
+  display: inline-block;
+
+}
+
+.rotate-box {
   margin: calc(0.5em + 1vw) 0 0 0;
   transform: rotate(90deg);
-  transform-origin: bottom left;
-  white-space:nowrap;
-
 }
 
 .balken {
