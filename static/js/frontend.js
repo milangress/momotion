@@ -60,3 +60,18 @@ function handlerOut() {
    $('#hoverbox').hide().html('');
    $(this).attr('data-mt', bsTitel);
 }
+
+
+// Animiere Gifs on hover
+
+$(function () {
+  $(".gif").hover(
+    function () {
+      var src = $(this).attr("src");
+      $(this).attr("src", src.replace(/\_static.png$/i, ".gif"));
+    },
+    function () {
+      var src = $(this).attr("src");
+      $(this).attr("src", src.replace(/\.gif$/i, "_static.png"));
+    });
+});
