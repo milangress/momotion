@@ -169,18 +169,20 @@ section {
  transition: all 1s;
 /*  padding-right: 150px;*/
 }
+
+/*
+Hide Scrollbar:
+https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-with-pure-css-in-chrome-ie-6-firefox-opera-and-safari/
+*/
+
 .text-body::-webkit-scrollbar {
  display: none;
 }
+
 .about-site, .diy-site{
   margin: calc(0.8em + 1vw) 0 0 0;
 }
 
-/*
-.text-body::-webkit-scrollbar {
-    display: none;
-}
-*/
 
 .text-body>.gedicht{
     width: 60vw;
