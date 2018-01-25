@@ -76,6 +76,8 @@ $(function () {
     });
 });
 
+// Load images after dom is ready and before the $(".gif").hover() function is active
+
 var images = [];
 function preload() {
     for (var i = 0; i < arguments.length; i++) {
