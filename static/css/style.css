@@ -165,6 +165,9 @@ section {
  transition: all 1s;
 /*  padding-right: 150px;*/
 }
+.text-body::-webkit-scrollbar {
+ display: none;
+}
 .about-site, .diy-site{
   margin: calc(0.8em + 1vw) 0 0 0;
 }
