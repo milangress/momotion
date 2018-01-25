@@ -91,3 +91,41 @@ preload(
     "img/diy/VIDEO3.gif",
     "img/diy/VIDEO4_2.gif"
 )
+
+let contentWidth = window.innerWidth * 0.826
+
+
+// P5 Sketch at about Page 
+
+var sketchAbout = function( p ) {
+  p.setup = function() {
+    p.frameRate(30);
+    p.createCanvas(window.innerWidth,window.innerHeight);
+  };
+
+  p.draw = function() {
+//    p.background(255);
+    p.noStroke();
+    let counter = p.sin(p.frameCount / 100)
+    let colorCounter = p.map(counter, -1,1,0,15);
+    p.colorMode(p.HSB, 100);
+    let c = p.color(colorCounter, 100, 100);
+    
+    let d = p.int(p.dist(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY));
+    let normalizeD = (d / 4) +25;
+    p.strokeWeight(normalizeD);
+    p.stroke(c)
+    
+    if (p.pmouseX != 0) {
+      p.line(p.mouseX,p.mouseY,p.pmouseX,p.pmouseY)
+    }
+
+    
+  };
+
+  p.mousePressed = function() {
+    p.clear();
+  };
+}
+
+//var myp5 = new p5(sketchAbout, 'canvas-about');

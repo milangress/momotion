@@ -218,3 +218,17 @@ https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-wi
 }
 
 /*END "Create Your own"*/
+
+/*About Site*/
+
+.about-site .Over-Canvas {
+  position: absolute;
+  top: 0px;
+}
+
+#canvas-about {
+  position: absolute;
+    top: 0;
+}
+
+/*END ABout Site*/
