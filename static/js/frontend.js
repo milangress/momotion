@@ -75,3 +75,17 @@ $(function () {
       $(this).attr("src", src.replace(/\.gif$/i, "_static.png"));
     });
 });
+
+var images = [];
+function preload() {
+    for (var i = 0; i < arguments.length; i++) {
+        images[i] = new Image();
+        images[i].src = preload.arguments[i];
+    }
+}
+preload(
+    "img/diy/VIDEO1.gif",
+    "img/diy/VIDEO2.gif",
+    "img/diy/VIDEO3.gif",
+    "img/diy/VIDEO4_2.gif"
+)
