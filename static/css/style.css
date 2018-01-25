@@ -13,21 +13,6 @@
     font-style: normal;
 }
 
-
-/*
-@font-face {
-    font-family: 'inknut_antiquaregular';
-    src: url('../fonts/InknutAntiqua-Regular-webfont.woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'inknut_antiqualight';
-    src: url('../fonts/InknutAntiqua-Light-webfont.woff');
-    font-weight: normal;
-    font-style: normal;
-*/
-}
 @font-face {
     font-family: 'Akzidenz';
     src: url('../fonts/AkzidenzGrotesk-Extended.otf');
@@ -67,9 +52,8 @@ a {
 .gedicht {
 
   font-family: JudeBold;
-  font-size: calc(0.75em + 2vw);
+  font-size: calc(0.8em + 2vw);
   padding-right: 30vh;
-  letter-spacing: -0.02em;
   line-height: 1.3;
 }
 @media (max-width: 800px) {
@@ -84,8 +68,8 @@ a {
 */
   text-shadow: -2px -2px var(--bg-color), -2px 2px var(--bg-color), 2px -2px var(--bg-color), 2px 2px var(--bg-color);
   background-size: 1px 1em;
-  -webkit-box-shadow: inset 0 -0.175em var(--bg-color), inset 0 -0.2em var(--txt-color);
-          box-shadow: inset 0 -0.175em var(--bg-color), inset 0 -0.2em var(--txt-color);
+  -webkit-box-shadow: inset 0 -0.15em var(--bg-color), inset 0 -0.2em var(--txt-color);
+          box-shadow: inset 0 -0.15em var(--bg-color), inset 0 -0.2em var(--txt-color);
   display: inline;
   line-height: 0.85;
 /*
@@ -141,7 +125,7 @@ section {
 
 
 .balken h1 {
-  margin: 0;
+  margin: calc(0.5em + 1vw) 0 0 0;
   transform: rotate(90deg);
   transform-origin: bottom left;
   white-space:nowrap;
@@ -182,7 +166,7 @@ section {
 /*  padding-right: 150px;*/
 }
 .about-site, .diy-site{
-  margin-top: 10px;
+  margin: calc(0.8em + 1vw) 0 0 0;
 }
 
 /*
@@ -243,4 +227,5 @@ transform: translate(-50%, -50%);
   padding-right:5px;
   color: white;
   z-index: 99;
+  font-size: calc(0.4em + 1vw);
 }
