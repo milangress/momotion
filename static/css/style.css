@@ -4,6 +4,17 @@
   --txt-color: #fff;
 }
 
+
+@font-face {
+    font-family: 'JudeBold';
+    src: url('../fonts/JudeBold.woff2') format('woff2'),
+        url('../fonts/JudeBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+/*
 @font-face {
     font-family: 'inknut_antiquaregular';
     src: url('../fonts/InknutAntiqua-Regular-webfont.woff');
@@ -15,6 +26,7 @@
     src: url('../fonts/InknutAntiqua-Light-webfont.woff');
     font-weight: normal;
     font-style: normal;
+*/
 }
 @font-face {
     font-family: 'Akzidenz';
@@ -54,7 +66,7 @@ a {
 }
 .gedicht {
 
-  font-family: inknut_antiqualight;
+  font-family: JudeBold;
   font-size: calc(0.75em + 2vw);
   padding-right: 30vh;
   letter-spacing: -0.02em;
@@ -70,14 +82,22 @@ a {
   underline:
   https://css-tricks.com/styling-underlines-web/
 */
+  text-shadow: -2px -2px var(--bg-color), -2px 2px var(--bg-color), 2px -2px var(--bg-color), 2px 2px var(--bg-color);
+  background-size: 1px 1em;
+  -webkit-box-shadow: inset 0 -0.175em var(--bg-color), inset 0 -0.2em var(--txt-color);
+          box-shadow: inset 0 -0.175em var(--bg-color), inset 0 -0.2em var(--txt-color);
+  display: inline;
+  line-height: 0.85;
+/*
   border-bottom: 2px solid var(--txt-color);
   display: inline-block;
-  line-height: 0.85;
+line-height: 0.85;
   text-shadow:
     1.5px 1.5px var(--bg-color),
     1.5px -1.5px var(--bg-color),
     -1.5px 1.5px var(--bg-color),
     -1.5px -1.5px var(--bg-color);
+*/
   cursor: none;
 }
 
