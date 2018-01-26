@@ -70,16 +70,68 @@ $(document).mousemove(function(mTC){
 $('.move-marker').hover(handlerIn, handlerOut)
 
 let bsTitel
+let svgID
+let svgPath
 
 function handlerIn(event) {
   console.log(this)
   bsTitel = $(this).attr('data-mt');
   $('#hoverbox').fadeTo(300, 1).html( bsTitel );
   
+  svgID = $(this).attr('data-svg');
+  $('#' + svgID).fadeIn(300);
+  
+  let svgPath = document.getElementById(svgID).getElementsByTagName('path')[0];
+  
+  startDrawingPath(svgPath)
+  
 }
 function handlerOut() {
    $('#hoverbox').hide().html('');
    $(this).attr('data-mt', bsTitel);
+
+  svgID = $(this).attr('data-svg');
+  
+  let svgPath = document.getElementById(svgID).getElementsByTagName('path')[0];
+
+  stopDrawingPath(svgPath);
+  
+  $('#' + svgID).fadeOut(300);
+}
+
+
+var distancePerPoint = 20;
+var drawFPS          = 60;
+
+let length
+let timer
+
+function startDrawingPath(svgPath){
+  length = 0;
+//  svgPath.style.stroke = '#f60';
+  console.log('start drawing')
+  timer = setInterval(function(){ increaseLength(svgPath) }, 1000/drawFPS);
+
+}
+
+function increaseLength(svgPath){
+  console.log('increase lenght')
+
+  var pathLength = svgPath.getTotalLength();
+  length += distancePerPoint;
+  console.log(length)
+  svgPath.style.strokeDasharray = [length,pathLength].join(' ');
+  
+  if (length >= pathLength) {
+    console.log('clear timer');
+    clearInterval(timer)
+  };
+}
+
+function stopDrawingPath(svgPath){
+  length = 0
+  clearInterval(timer);
+//  svgPath.style.strokeDasharray = '';
 }
 
 
