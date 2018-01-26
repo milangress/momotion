@@ -229,6 +229,7 @@ https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-wi
 #canvas-about {
   position: absolute;
     top: 0;
+/*  cursor: url(../img/iphone-pointer.png), auto;*/
 }
 
 /*END ABout Site*/
