@@ -2,11 +2,15 @@ $(".panel").click(function(event) {
   event.preventDefault();
   let link = event.currentTarget.dataset.link
   
-  if (link === "nextPoem"){
+  if (link === "Poem") {
+    
+  }
+  else if (link === "nextPoem"){
     loadNewPoem();
   } else {
     $(".panel").addClass("collapse");
     $(this).removeClass("collapse");
+    $("#gedicht-panel").empty();
   }
 });
 

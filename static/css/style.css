@@ -50,6 +50,9 @@ a {
     padding-right: 10vh;
   }
 }
+#gedicht-panel {
+  min-width: 0;
+}
 .move-marker {
   /*
   underline:

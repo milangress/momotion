@@ -9,12 +9,41 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
+
+const poemFolder = __dirname + '/static/poems';
+let poemList = []
+
+fs.readdir(poemFolder, (err, files) => {
+  poemList = files
+})
+
 var app = express();
 
 
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static(__dirname + '/public'));
 
+app.get('/newpoem', function (req, res) {
+  randPoem = poemList[Math.floor(Math.random()*poemList.length)]
+//  res.res.sendFile('/static/poems' + randPoem);
+  
+  let options = {
+    root: __dirname + '/static/poems/',
+    dotfiles: 'deny',
+    headers: {
+        'x-timestamp': Date.now(),
+        'x-sent': true
+    }
+  };
+
+  res.sendFile(randPoem, options, function (err) {
+    if (err) {
+      next(err);
+    } else {
+      console.log('Sent:', randPoem);
+    }
+  });
+});
 
 var server = app.listen(PORT, function () {
     var host = 'localhost';
