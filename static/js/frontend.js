@@ -93,13 +93,14 @@ preload(
 )
 
 let contentWidth = window.innerWidth * 0.826
-
+let pdistance = 0
+let normalizeDistance = 0
 
 // P5 Sketch at about Page 
 
 var sketchAbout = function( p ) {
   p.setup = function() {
-    p.frameRate(30);
+    p.frameRate(60);
     p.createCanvas(window.innerWidth,window.innerHeight);
   };
 
@@ -111,14 +112,18 @@ var sketchAbout = function( p ) {
     p.colorMode(p.HSB, 100);
     let c = p.color(colorCounter, 100, 100);
     
-    let d = p.int(p.dist(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY));
-    let normalizeD = (d / 4) +25;
-    p.strokeWeight(normalizeD);
+    
+    
+    p.strokeWeight((normalizeDistance + pdistance) / 2);
     p.stroke(c)
     
     if (p.pmouseX != 0) {
       p.line(p.mouseX,p.mouseY,p.pmouseX,p.pmouseY)
     }
+    
+    let distance = p.int(p.dist(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY));
+    normalizeDistance = (distance / 4) + 200;
+    pdistance = (normalizeDistance + pdistance) / 2;
 
     
   };
@@ -128,4 +133,4 @@ var sketchAbout = function( p ) {
   };
 }
 
-//var myp5 = new p5(sketchAbout, 'canvas-about');
+var myp5 = new p5(sketchAbout, 'canvas-about');
