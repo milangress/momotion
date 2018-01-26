@@ -92,7 +92,6 @@ preload(
     "img/diy/VIDEO4_2.gif"
 )
 
-let contentWidth = window.innerWidth * 0.826
 let pdistance = 0
 let normalizeDistance = 0
 
@@ -106,13 +105,10 @@ var sketchAbout = function( p ) {
 
   p.draw = function() {
 //    p.background(255);
-    p.noStroke();
     let counter = p.sin(p.frameCount / 100)
     let colorCounter = p.map(counter, -1,1,0,15);
     p.colorMode(p.HSB, 100);
     let c = p.color(colorCounter, 100, 100);
-    
-    
     
     p.strokeWeight((normalizeDistance + pdistance) / 2);
     p.stroke(c)
