@@ -1,0 +1,15 @@
+fast:	rushing, car, leopard, day, time, risk,  thoughts, fire, weekend, life, guns, nervous, young, fit, motivation
+
+slow: boring, snail, night, careful, universe, planet, monday, relaxed, meditate, om, spirit, now, old, sleepy
+
+sustained: fluid, harmonic, continuous, water, orchester, melody, sound, flute, round, circle, endless
+
+sudden: mechanical, war, exhausting, edgy, exciting, changing, tyranny, robot, danger, abruptly, stop, start, end, acceleration
+
+strong: hard, muscles, aligator, hunt, brutal, building, man, strenght, victory, vodka, mindset,
+
+light: soft, cat, touch, weak, feather, strings, hair, fragile, rising, release, bird, fly, air, lifted
+
+restricted: small, shy, shaking, paralysed, survival, mouse, children, locked up, constraint, effortless, vibrations
+
+extensive: big, filling, proud, self-concious, crazy, huge, happy, universe, effort, party, dance, free
