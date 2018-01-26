@@ -17,11 +17,16 @@ $(".panel").click(function(event) {
 const loadNewPoem = function() {
   console.log("load new Poem")
   $(".panel").addClass("collapse");
+  $("#gedicht-panel").empty();
+  let timeoutID = window.setTimeout(showPoem, 300);
   $("#gedicht-panel").load("/newpoem", function() {
   console.log('sucess loading')
-  $(this).removeClass("collapse");
   $('.move-marker').hover(handlerIn, handlerOut)
   });
+}
+
+const showPoem = function() {
+  $("#gedicht-panel").removeClass("collapse");
 }
 
 
