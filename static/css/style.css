@@ -195,7 +195,7 @@ https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-wi
   padding-right: 5px;
   color: white;
   z-index: 99;
-  font-size: calc(0.4em + 1vw);
+  font-size: calc(0.8em + 2vw);
 }
 
 /*END Tools*/
@@ -223,7 +223,7 @@ https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-wi
 
 .about-site .Over-Canvas {
   position: absolute;
-  top: 0px;
+  top: calc(0.8em + 1vw);
 }
 
 #canvas-about {
