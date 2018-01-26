@@ -18,7 +18,7 @@ const loadNewPoem = function() {
   console.log("load new Poem")
   $(".panel").addClass("collapse");
   $("#gedicht-panel").empty();
-  let timeoutID = window.setTimeout(showPoem, 300);
+  let timeoutID = window.setTimeout(showPoem, 500);
   $("#gedicht-panel").load("/newpoem", function() {
   console.log('sucess loading')
   $('.move-marker').hover(handlerIn, handlerOut)

@@ -81,7 +81,7 @@ section {
   overflow: hidden;
   display: flex;
   flex-direction: row;
-  transition: all 0.5s;
+  transition: all 0.8s;
   min-width: calc(1.5em + 1vw);
 }
 .collapse {
