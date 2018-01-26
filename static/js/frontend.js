@@ -16,7 +16,12 @@ $(".panel").click(function(event) {
 
 const loadNewPoem = function() {
   console.log("load new Poem")
-//  TODO
+  $(".panel").addClass("collapse");
+  $("#gedicht-panel").load("/newpoem", function() {
+  console.log('sucess loading')
+  $(this).removeClass("collapse");
+  $('.move-marker').hover(handlerIn, handlerOut)
+  });
 }
 
 
