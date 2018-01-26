@@ -41,9 +41,10 @@ a {
 }
 .gedicht {
   font-family: JudeBold;
-  font-size: calc(0.8em + 2vw);
+  font-size: calc(0.9em + 2.7vw);
   padding-right: 30vh;
   line-height: 1.3;
+  margin-top: calc(-0.2em - 0.5vh);
 }
 @media (max-width: 800px) {
   .gedicht {
@@ -198,7 +199,7 @@ https://blogs.msdn.microsoft.com/kurlak/2013/11/03/hiding-vertical-scrollbars-wi
   padding-right: 5px;
   color: white;
   z-index: 99;
-  font-size: calc(0.8em + 2vw);
+  font-size: calc(0.4em + 1vw);
 }
 
 /*END Tools*/

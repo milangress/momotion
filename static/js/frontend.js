@@ -52,6 +52,13 @@ const hideIntro = function() {
 
 setTimeout(function(){ hideIntro(); }, 15000);
 
+$('.impressum-hide').hide();
+
+$('#impressum').click(function() {
+  $('.impressum-hide').fadeIn(300);
+  
+})
+
 
 // zeige Beschreibung bei hover an:
 $('body').append('<div id="hoverbox"/>');
@@ -141,6 +148,10 @@ var sketchAbout = function( p ) {
   p.mousePressed = function() {
     p.clear();
   };
+  
+  window.setInterval(function() {
+    p.clear();
+  }, 4000);
 }
 
 var myp5 = new p5(sketchAbout, 'canvas-about');
