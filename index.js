@@ -23,8 +23,11 @@ var app = express();
 app.use(express.static(path.join(__dirname, 'static')));
 app.use(express.static(__dirname + '/public'));
 
+let poemCounter = 1
+
 app.get('/newpoem', function (req, res) {
-  randPoem = poemList[Math.floor(Math.random()*poemList.length)]
+//  randPoem = poemList[Math.floor(Math.random()*poemList.length)]
+  randPoem = poemList[poemCounter]
 //  res.res.sendFile('/static/poems' + randPoem);
   
   let options = {
@@ -41,6 +44,10 @@ app.get('/newpoem', function (req, res) {
       next(err);
     } else {
       console.log('Sent:', randPoem);
+      poemCounter = poemCounter + 1
+      if (poemCounter >= poemList.length) {
+        poemCounter = 0;
+      }
     }
   });
 });
