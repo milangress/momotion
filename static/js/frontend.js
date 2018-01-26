@@ -34,7 +34,7 @@ $( "#intro" ).click(function() {
   hideIntro();
 });
 
-$(".intro-text").hide().delay(2000).fadeIn(4000);
+$(".intro-text").hide().delay(8000).fadeIn(4000);
 
 
 const hideIntro = function() {
@@ -100,8 +100,8 @@ function handlerOut() {
 }
 
 
-var distancePerPoint = 20;
-var drawFPS          = 60;
+var distancePerPoint = 5;
+var drawFPS          = 1000;
 
 let length
 let timer
@@ -119,7 +119,7 @@ function increaseLength(svgPath){
 
   var pathLength = svgPath.getTotalLength();
   length += distancePerPoint;
-  console.log(length)
+  console.log([length,pathLength].join(' '))
   svgPath.style.strokeDasharray = [length,pathLength].join(' ');
   
   if (length >= pathLength) {
