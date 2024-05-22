@@ -6,8 +6,6 @@ rm.loadText("Mingled chains declare delicacy faintly flickering like fairies fal
 
 var sentences = rm.generateSentences(7); console.log(sentences);
 
-   let result = rm.getCompletions([ "Us"]);
-   console.log(result)
 
    
 output="";

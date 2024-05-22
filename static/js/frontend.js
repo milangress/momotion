@@ -203,7 +203,7 @@ var sketchAbout = function( p ) {
   
   window.setInterval(function() {
     p.clear();
-  }, 2500);
+  }, 00);
 }
 
 var myp5 = new p5(sketchAbout, 'canvas-about');
